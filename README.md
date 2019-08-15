@@ -1,3 +1,3 @@
 # logsensei
 
-# Personal Formatting on Loguru
+Personal Wrapper on Loguru
