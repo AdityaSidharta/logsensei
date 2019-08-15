@@ -34,31 +34,33 @@ class Logger:
         self.datetime = _get_datetime()
         self.level = level
         self.format = "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> |" \
-                      " <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+                      " <cyan>{name: ^15}</cyan>:<cyan>{function: ^15}</cyan>:<cyan>{line: >3}</cyan> - <level>{message}</level>"
         self.logger = loguru_logger
+        self.logger.remove(0)
         self.logger.add(sys.stderr, format=self.format, level=self.level)
         self.logger.add(
             os.path.join(logger_file, "{}_{}.log".format(self.name, self.datetime)),
             format=self.format,
             level=self.level,
         )
+        self.logger.patch(lambda record: record.update(name="my_module"))
         self.is_setup = True
 
     def info(self, msg):
         assert self.is_setup, "Please Setup the Logger First"
-        return self.logger.info(msg)
+        return self.logger.opt(depth=1).info(msg)
 
     def debug(self, msg):
         assert self.is_setup, "Please Setup the Logger First"
-        return self.logger.debug(msg)
+        return self.logger.opt(depth=1).debug(msg)
 
     def error(self, msg):
         assert self.is_setup, "Please Setup the Logger First"
-        return self.logger.error(msg)
+        return self.logger.opt(depth=1).error(msg)
 
     def warning(self, msg):
         assert self.is_setup, "Please Setup the Logger First"
-        return self.logger.warning(msg)
+        return self.logger.opt(depth=1).warning(msg)
 
 
 logger = Logger()
