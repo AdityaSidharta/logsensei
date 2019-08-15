@@ -25,7 +25,8 @@ class Logger:
         self.name = None
         self.datetime = None
         self.level = None
-        self.format = None
+        self.sys_format = None
+        self.file_format = None
         self.logger = None
         self.is_setup = False
 
@@ -33,14 +34,18 @@ class Logger:
         self.name = name
         self.datetime = _get_datetime()
         self.level = level
-        self.format = "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> |" \
-                      " <cyan>{name: ^15}</cyan>:<cyan>{function: ^15}</cyan>:<cyan>{line: >3}</cyan> - <level>{message}</level>"
+        self.sys_format = "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> |" \
+                          " <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - " \
+                          "<level>{message}</level>"
+        self.file_format = "<green>{time:YYYY-MM-DD HH:mm:ss:SSS}</green> | <level>{level: <8}</level> |" \
+                           " <cyan>{name: ^15}</cyan>:<cyan>{function: ^15}</cyan>:<cyan>{line: >3}</cyan> - " \
+                           "<level>{message}</level>"
         self.logger = loguru_logger
         self.logger.remove(0)
-        self.logger.add(sys.stderr, format=self.format, level=self.level)
+        self.logger.add(sys.stderr, format=self.sys_format, level=self.level)
         self.logger.add(
             os.path.join(logger_file, "{}_{}.log".format(self.name, self.datetime)),
-            format=self.format,
+            format=self.file_format,
             level=self.level,
         )
         self.logger.patch(lambda record: record.update(name="my_module"))
