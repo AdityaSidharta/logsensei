@@ -25,7 +25,7 @@ from torchsummary import summary
 
 from logsensei.utils import _get_datetime
 
-
+# pylint: disable=too-many-public-methods
 class Logger:
     """
     Setting up logger for the project. The log will be logged within the file as well

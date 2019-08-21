@@ -13,8 +13,8 @@ init:
 
 .PHONY: test
 test:
+	pipenv run pylint logsensei --reports=y
 	bash bin/test.sh
-	pylint logsensei --reports=y
 
 publishmajor:
 	bash bin/publishmajor.sh
