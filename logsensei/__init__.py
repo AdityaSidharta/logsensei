@@ -25,6 +25,7 @@ from torchsummary import summary
 
 from logsensei.utils import _get_datetime
 
+
 # pylint: disable=too-many-public-methods
 class Logger:
     """
@@ -39,15 +40,10 @@ class Logger:
         self.default_level = default_level
         self.time_sys_format = "<green>{time:YYYY-MM-DD HH:mm:ss}</green>"
         self.level_sys_format = "<level>{level}</level>"
-        self.function_sys_format = (
-            "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan>"
-        )
+        self.function_sys_format = "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan>"
         self.message_sys_format = "<level>{message}</level>"
         self.sys_format = "{} | {} | {} | {}".format(
-            self.time_sys_format,
-            self.level_sys_format,
-            self.function_sys_format,
-            self.message_sys_format,
+            self.time_sys_format, self.level_sys_format, self.function_sys_format, self.message_sys_format
         )
         self.time_file_format = None
         self.level_file_format = None
@@ -73,10 +69,7 @@ class Logger:
         self.function_file_format = "<cyan>{name: ^15}</cyan>:<cyan>{function: ^15}</cyan>:<cyan>{line: >3}</cyan>"
         self.message_file_format = "<level>{message}</level>"
         self.file_format = "{} | {} | {} | {}".format(
-            self.time_file_format,
-            self.level_file_format,
-            self.function_file_format,
-            self.message_file_format,
+            self.time_file_format, self.level_file_format, self.function_file_format, self.message_file_format
         )
         self.file_index = self.logger.add(
             os.path.join(logger_file, "{}_{}.log".format(self.name, self.datetime)),
@@ -108,9 +101,7 @@ class Logger:
 
     def create(self, template_name, msg):
         if template_name in self.template.keys():
-            self.logger.warning(
-                "Replacing the template message in {}".format(template_name)
-            )
+            self.logger.warning("Replacing the template message in {}".format(template_name))
         self.template[template_name] = msg
 
     def apply(self, template_name, *args):
@@ -130,17 +121,11 @@ class Logger:
             unique_values = set(array)
             n_unique_values = len(set(array))
             n_missing_values = np.sum(np.isnan(array))
-            self.log(
-                "Array {} unique values : {}".format(array_name, unique_values),
-                self.default_level,
-            )
-            self.log(
-                "Array {} cardinality : {}".format(array_name, n_unique_values),
-                self.default_level,
-            )
+            self.log("Array {} unique values : {}".format(array_name, unique_values), self.default_level)
+            self.log("Array {} cardinality : {}".format(array_name, n_unique_values), self.default_level)
             self.log(
                 "Array {} missing values : {} ({:.2f}%)".format(
-                    array_name, n_missing_values, n_missing_values / n_values * 100.
+                    array_name, n_missing_values, n_missing_values / n_values * 100.0
                 ),
                 self.default_level,
             )
@@ -170,14 +155,7 @@ class Logger:
                 n_most_common = len(most_common)
                 self.log(
                     "Array {} top {} values : ".format(array_name, n_most_common)
-                    + " | ".join(
-                        [
-                            "{} - {}({:.2f}%)".format(
-                                x[0], x[1], x[1] / n_values * 100.
-                            )
-                            for x in most_common
-                        ]
-                    ),
+                    + " | ".join(["{} - {}({:.2f}%)".format(x[0], x[1], x[1] / n_values * 100.0) for x in most_common]),
                     self.default_level,
                 )
 
@@ -187,9 +165,7 @@ class Logger:
         array_1_ndim = array_1.ndim
         array_2_ndim = array_2.ndim
         self.log(
-            "Compare {} vs {} - shape : {} vs {}".format(
-                array_1_name, array_2_name, array_1_shape, array_2_shape
-            ),
+            "Compare {} vs {} - shape : {} vs {}".format(array_1_name, array_2_name, array_1_shape, array_2_shape),
             self.default_level,
         )
         if (array_1_ndim == 1) and (array_2_ndim == 1):
@@ -199,81 +175,52 @@ class Logger:
             array_intersection = array_1_unique.intersection(array_2_unique)
             array_1_outer = array_1_unique - array_intersection
             array_2_outer = array_2_unique - array_intersection
-            self.log(
-                "Compare {} vs {} - cardinality :".format(array_1_name, array_2_name),
-                self.default_level,
-            )
+            self.log("Compare {} vs {} - cardinality :".format(array_1_name, array_2_name), self.default_level)
             self.log(
                 "Intersection {} and {} : {} ({:.2f}%)".format(
-                    array_1_name,
-                    array_2_name,
-                    len(array_intersection),
-                    len(array_intersection) / cardinality,
+                    array_1_name, array_2_name, len(array_intersection), len(array_intersection) / cardinality
                 ),
                 self.default_level,
             )
             self.log(
                 "Unique Values in {} but not in {} : {} ({:.2f}%)".format(
-                    array_1_name,
-                    array_2_name,
-                    len(array_1_outer),
-                    len(array_1_outer) / cardinality,
+                    array_1_name, array_2_name, len(array_1_outer), len(array_1_outer) / cardinality
                 ),
                 self.default_level,
             )
             self.log(
                 "Unique Values in {} but not in {} : {} ({:.2f}%)".format(
-                    array_2_name,
-                    array_1_name,
-                    len(array_2_outer),
-                    len(array_2_outer) / cardinality,
+                    array_2_name, array_1_name, len(array_2_outer), len(array_2_outer) / cardinality
                 ),
                 self.default_level,
             )
 
     def dict(self, dictionary, dictionary_name):
         n_values = len(dictionary)
-        self.log(
-            "Dictionary {} length : {}".format(dictionary_name, n_values),
-            self.default_level,
-        )
+        self.log("Dictionary {} length : {}".format(dictionary_name, n_values), self.default_level)
         self.log("Dictionary {}".format(dictionary_name), self.default_level)
         for key, value in dictionary.items():
             self.log("{} - {}".format(key, value), self.default_level)
 
     def list(self, input_list, input_list_name):
         n_values = len(input_list)
-        self.log(
-            "List {} length : {}".format(input_list_name, n_values), self.default_level
-        )
+        self.log("List {} length : {}".format(input_list_name, n_values), self.default_level)
         self.log("List {} : {}".format(input_list_name, input_list), self.default_level)
 
     def set(self, input_set, input_set_name):
         n_values = len(input_set)
-        self.log(
-            "Set {} length : {}".format(input_set_name, n_values), self.default_level
-        )
+        self.log("Set {} length : {}".format(input_set_name, n_values), self.default_level)
         self.log("Set {} : {}".format(input_set_name, input_set), self.default_level)
 
     def savepath(self, file_to_save, save_path):
-        self.log(
-            "Saving {} to path : {}".format(file_to_save, save_path), self.default_level
-        )
+        self.log("Saving {} to path : {}".format(file_to_save, save_path), self.default_level)
 
     def loadpath(self, file_to_load, load_path):
-        self.log(
-            "Loading {} from path : {}".format(file_to_load, load_path),
-            self.default_level,
-        )
+        self.log("Loading {} from path : {}".format(file_to_load, load_path), self.default_level)
 
     def scikit(self, model, model_name):
-        self.log(
-            "Model {} type : {}".format(model_name, type(model).__name__),
-            self.default_level,
-        )
-        self.dict(
-            model.get_params(), "Parameters of scikit-learn model {}".format(model_name)
-        )
+        self.log("Model {} type : {}".format(model_name, type(model).__name__), self.default_level)
+        self.dict(model.get_params(), "Parameters of scikit-learn model {}".format(model_name))
 
     def xgboost(self, model, model_name):
         raise NotImplementedError
@@ -325,83 +272,37 @@ class Logger:
     def regression(self, true_array, predict_array, array_name):
         self.log("{} Regression Score".format(array_name), self.default_level)
         self.log("=" * 20, self.default_level)
+        self.log("Mean Absolute Error : {}".format(mean_absolute_error(true_array, predict_array)), self.default_level)
+        self.log("Mean Squared Error : {}".format(mean_squared_error(true_array, predict_array)), self.default_level)
+        self.log("R2 Score : {}".format(r2_score(true_array, predict_array)), self.default_level)
         self.log(
-            "Mean Absolute Error : {}".format(
-                mean_absolute_error(true_array, predict_array)
-            ),
-            self.default_level,
-        )
-        self.log(
-            "Mean Squared Error : {}".format(
-                mean_squared_error(true_array, predict_array)
-            ),
-            self.default_level,
-        )
-        self.log(
-            "R2 Score : {}".format(r2_score(true_array, predict_array)),
-            self.default_level,
-        )
-        self.log(
-            "Explained Variance Score : {}".format(
-                explained_variance_score(true_array, predict_array)
-            ),
+            "Explained Variance Score : {}".format(explained_variance_score(true_array, predict_array)),
             self.default_level,
         )
 
     def classification(self, true_array, predict_array, array_name):
         self.log("{} Classification Score".format(array_name), self.default_level)
         self.log("=" * 20, self.default_level)
-        self.log(
-            "Accuracy Score : {}".format(accuracy_score(true_array, predict_array)),
-            self.default_level,
-        )
-        self.log(
-            "Precision Score : {}".format(precision_score(true_array, predict_array)),
-            self.default_level,
-        )
-        self.log(
-            "Recall Score : {}".format(recall_score(true_array, predict_array)),
-            self.default_level,
-        )
-        self.log(
-            "F1 Score : {}".format(f1_score(true_array, predict_array)),
-            self.default_level,
-        )
-        self.log(
-            "ROC AUC Score : {}".format(roc_auc_score(true_array, predict_array)),
-            self.default_level,
-        )
+        self.log("Accuracy Score : {}".format(accuracy_score(true_array, predict_array)), self.default_level)
+        self.log("Precision Score : {}".format(precision_score(true_array, predict_array)), self.default_level)
+        self.log("Recall Score : {}".format(recall_score(true_array, predict_array)), self.default_level)
+        self.log("F1 Score : {}".format(f1_score(true_array, predict_array)), self.default_level)
+        self.log("ROC AUC Score : {}".format(roc_auc_score(true_array, predict_array)), self.default_level)
 
     def multiclass(self, true_array, predict_array, array_name):
         self.log("{} Classification Score".format(array_name), self.default_level)
         self.log("=" * 20, self.default_level)
+        self.log("Accuracy Score : {}".format(accuracy_score(true_array, predict_array)), self.default_level)
         self.log(
-            "Accuracy Score : {}".format(accuracy_score(true_array, predict_array)),
+            "Precision Score : {}".format(precision_score(true_array, predict_array, average="micro")),
             self.default_level,
         )
         self.log(
-            "Precision Score : {}".format(
-                precision_score(true_array, predict_array, average="micro")
-            ),
-            self.default_level,
+            "Recall Score : {}".format(recall_score(true_array, predict_array, average="micro")), self.default_level
         )
+        self.log("F1 Score : {}".format(f1_score(true_array, predict_array, average="micro")), self.default_level)
         self.log(
-            "Recall Score : {}".format(
-                recall_score(true_array, predict_array, average="micro")
-            ),
-            self.default_level,
-        )
-        self.log(
-            "F1 Score : {}".format(
-                f1_score(true_array, predict_array, average="micro")
-            ),
-            self.default_level,
-        )
-        self.log(
-            "ROC AUC Score : {}".format(
-                roc_auc_score(true_array, predict_array, average="micro")
-            ),
-            self.default_level,
+            "ROC AUC Score : {}".format(roc_auc_score(true_array, predict_array, average="micro")), self.default_level
         )
 
 
