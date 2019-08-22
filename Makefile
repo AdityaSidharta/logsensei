@@ -9,12 +9,16 @@ help:
 
 init:
 	bash bin/init.sh
-	pipenv shell
+
+setup:
+	bash bin/setup.sh
 
 .PHONY: test
 test:
-	pipenv run pylint logsensei --reports=y
-	bash bin/test.sh
+	pipenv sync --dev
+	pipenv run pylint logsensei
+	pipenv run flake8 logsensei
+	pipenv run py.test
 
 publishmajor:
 	bash bin/publishmajor.sh

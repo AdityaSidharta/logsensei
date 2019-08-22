@@ -9,6 +9,6 @@ python:
   - "3.8-dev"  # 3.8 development branch
   - "nightly"
 install:
-  - make init
+  - make setup
 script:
   - make test
