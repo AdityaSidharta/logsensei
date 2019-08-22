@@ -2,4 +2,4 @@
 
 Personal Wrapper on Loguru
 
-https://travis-ci.org/AdityaSidharta/logsensei.svg?branch=master
+[![Build Status](https://travis-ci.org/AdityaSidharta/logsensei.svg?branch=master)](https://travis-ci.org/AdityaSidharta/logsensei)
