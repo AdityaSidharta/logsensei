@@ -10,9 +10,6 @@ help:
 init:
 	bash bin/init.sh
 
-setup:
-	bash bin/setup.sh
-
 .PHONY: test
 test:
 	pipenv sync --dev
