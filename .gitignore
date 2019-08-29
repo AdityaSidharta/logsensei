@@ -126,3 +126,7 @@ dmypy.json
 
 # IDEA
 .idea/
+
+# User Defined Folders
+env
+tmp

@@ -11,6 +11,7 @@ flit = "*"
 pytest = "*"
 tox = "*"
 pylint = "*"
+python-dotenv = "*"
 
 [packages]
 loguru = "*"

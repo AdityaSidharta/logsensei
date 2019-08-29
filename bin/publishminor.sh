@@ -2,4 +2,4 @@
 
 bumpversion minor --tag --commit
 git push
-flit publish
+dotenv -f env/flit.env run flit publish
