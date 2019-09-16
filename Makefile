@@ -12,10 +12,7 @@ init:
 
 .PHONY: test
 test:
-	pipenv sync --dev
-	pipenv run pylint logsensei
-	pipenv run flake8 logsensei
-	pipenv run py.test
+	bash bin/test.sh
 
 publishmajor:
 	bash bin/publishmajor.sh

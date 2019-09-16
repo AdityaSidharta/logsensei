@@ -12,12 +12,16 @@ pytest = "*"
 tox = "*"
 pylint = "*"
 python-dotenv = "*"
+pytest-cov = "*"
+codecov = "*"
+testfixtures = "*"
+ipykernel = "*"
+mypy = "*"
 
 [packages]
 loguru = "*"
 scikit-learn = "*"
 numpy = "*"
-torchsummary = "*"
 
 [requires]
 python_version = "3.7.2"
