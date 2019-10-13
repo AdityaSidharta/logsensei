@@ -4,6 +4,7 @@ __version__ = "0.2.1"
 __author__ = "Aditya Kelvianto Sidharta"
 
 import logging
+import io
 import os
 import sys
 from collections import Counter
@@ -141,10 +142,14 @@ class Logger:
             raise ValueError("template_name has not been created before." " use logger.create to create new template.")
 
     def df(self, df, df_name):
+        buf = io.StringIO()
+        df.info(buf=buf)
+        s = buf.getvalue()
+        info = '\n'.join(s.split('\n')[2:])
         shape = df.shape
         self.log("DataFrame {} shape : {}".format(df_name, shape), self.default_level, depth=3)
         self.log("DataFrame {} info:".format(df_name), self.default_level, depth=3)
-        self.log(df.info(), self.default_level, depth=3)
+        self.log(info, self.default_level, depth=3)
 
     def array(self, array, array_name):
         shape = array.shape

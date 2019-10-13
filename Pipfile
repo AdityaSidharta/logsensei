@@ -17,6 +17,7 @@ codecov = "*"
 testfixtures = "*"
 ipykernel = "*"
 mypy = "*"
+pandas = "*"
 
 [packages]
 loguru = "*"

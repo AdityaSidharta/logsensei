@@ -1,6 +1,8 @@
 import logging
 import os
 
+import pandas as pd
+import numpy as np
 import decorator
 import loguru
 import pytest
@@ -138,3 +140,18 @@ def test_template(caplog):
         ('logsensei', logging.WARNING, 'Replacing the template message in template'),
         ("test.test_logsensei", logging.INFO, "template : new world"),
     ]
+
+#
+# def test_df(caplog):
+#     df = pd.DataFrame({
+#         'a': [1,2,3,4,np.nan],
+#         'b': ['foo', 'bar', 'baz', np.nan, np.nan],
+#         'c': [True, True, False, np.nan, np.nan],
+#         'd': [1.0, 2.0, 3.0, 4.0, np.nan]
+#     })
+#     logger.df(df, 'test_df')
+#     assert caplog.record_tuples == [
+#         ("test.test_logsensei", logging.INFO, )
+#     ]
+#
+#
