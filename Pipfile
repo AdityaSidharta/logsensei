@@ -18,6 +18,7 @@ testfixtures = "*"
 ipykernel = "*"
 mypy = "*"
 pandas = "*"
+portray = "*"
 
 [packages]
 loguru = "*"

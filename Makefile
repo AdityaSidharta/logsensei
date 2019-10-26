@@ -1,3 +1,4 @@
+.PHONY: test
 SHELL := /bin/bash
 
 help:
@@ -10,7 +11,6 @@ help:
 init:
 	bash bin/init.sh
 
-.PHONY: test
 test:
 	bash bin/test.sh
 
@@ -22,3 +22,6 @@ publishminor:
 
 publishpatch:
 	bash bin/publishpatch.sh
+
+docs:
+	bash bin/build_docs.sh
