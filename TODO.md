@@ -2,3 +2,4 @@
 - Add Codacy Test (codacy)
 - Add README.md, docstring, and read the docs page (readthedocs)
 - Add Static Typing (mypy)
+- Add function for xgboost and lightGBM
