@@ -259,12 +259,13 @@ class Logger:
         self.log("Model {} type : {}".format(model_name, type(model).__name__), self.default_level, depth=3)
         self.dict(model.get_params(), "Parameters of scikit-learn model {}".format(model_name))
 
-    # TODO: Implement XGBoost, LightGBM
+    # TODO: Implement XGBoost
     def xgboost(self, model, model_name):
-        raise NotImplementedError
+        raise NotImplementedError("XGBoost logging will come in the next release")
 
+    # TODO: Implement LightGBM
     def lightgbm(self, model, model_name):
-        raise NotImplementedError
+        raise NotImplementedError("LightGBM logging will come in the next release")
 
     def pytorch_tensor(self, tensor, tensor_name):
         shape = tuple(tensor.shape)
