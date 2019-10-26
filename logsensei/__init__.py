@@ -137,7 +137,7 @@ class Logger:
         buf = io.StringIO()
         df.info(buf=buf)
         s = buf.getvalue()
-        info = '\n'.join(s.split('\n')[2:])
+        info = '\n'.join(s.split('\n')[3:-3])
         shape = df.shape
         self.log("DataFrame {} shape : {}".format(df_name, shape), self.default_level, depth=3)
         self.log("DataFrame {} info:".format(df_name), self.default_level, depth=3)
