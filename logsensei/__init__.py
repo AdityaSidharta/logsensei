@@ -26,16 +26,8 @@ from sklearn.metrics import (
 from logsensei.utils import _get_datetime
 
 
-# TODO : Fix torchsummary & torch installation
-# from torchsummary import summary
-
-
 # pylint: disable=too-many-public-methods
 class Logger:
-    """
-    Setting up logger for the project. The log will be logged within the file as well
-    logger.setup_logger(script_name) must be called first before using the logger.
-    """
 
     def __init__(self):
         self.default_level = logging.INFO
@@ -308,11 +300,6 @@ class Logger:
             self.default_level,
             depth=3,
         )
-
-    #    def pytorch_model(self, model, model_name, input_shape):
-    #        self.log("PyTorch Model {} Summary :".format(model_name), self.default_level,
-    #        depth=3)
-    #        self.log(summary(model, input_shape), self.default_level, depth=3)
 
     def tensorflow_model(self, model, model_name):
         self.log("TensorFlow Model {} Summary :".format(model_name), self.default_level, depth=3)
