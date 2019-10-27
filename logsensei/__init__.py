@@ -10,6 +10,7 @@ import sys
 from collections import Counter
 from typing import Any
 
+import pandas as pd
 import numpy as np
 from loguru import logger as loguru_logger
 from sklearn.metrics import (
@@ -236,7 +237,7 @@ class Logger:
             n_values = len(array)
             unique_values = set(array)
             n_unique_values = len(set(array))
-            n_missing_values = np.sum(np.isnan(array))
+            n_missing_values = np.sum(pd.isnull(array))
             if n_unique_values <= MAX_ARRAY:
                 self.log("Array {} unique values : {}".format(array_name, unique_values), self.default_level, depth=3)
             self.log("Array {} cardinality : {}".format(array_name, n_unique_values), self.default_level, depth=3)

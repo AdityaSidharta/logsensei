@@ -8,4 +8,4 @@ author = "Aditya Kelvianto Sidharta"
 author-email = "aditya.sdrt@gmail.com"
 home-page = "https://github.com/AdityaSidharta/logsensei"
 classifiers = ["License :: OSI Approved :: MIT License"]
-requires = ['loguru', 'scikit-learn', 'numpy']
+requires = ['loguru', 'scikit-learn', 'numpy', 'pandas']
