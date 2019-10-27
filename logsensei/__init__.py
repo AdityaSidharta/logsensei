@@ -27,6 +27,15 @@ from sklearn.metrics import (
 from logsensei.constant import MAX_SET, MAX_LIST, MAX_DF, MAX_ARRAY
 from logsensei.utils import _get_datetime
 
+CRITICAL = 50
+FATAL = CRITICAL
+ERROR = 40
+WARNING = 30
+WARN = WARNING
+INFO = 20
+DEBUG = 10
+NOTSET = 0
+
 
 # pylint: disable=too-many-public-methods
 class Logger:
