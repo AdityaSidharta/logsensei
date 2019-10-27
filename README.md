@@ -5,7 +5,7 @@
 Logger for Data Scientist -  [Documentation](https://adityasidharta.com/logsensei/reference/logsensei/)
 
 [![Build Status](https://travis-ci.org/AdityaSidharta/logsensei.svg?branch=master)](https://travis-ci.org/AdityaSidharta/logsensei) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/315315d588c745929c5a3093d2b92850)](https://www.codacy.com/manual/AdityaSidharta/logsensei?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AdityaSidharta/logsensei&amp;utm_campaign=Badge_Grade) 
-[![codecov](https://codecov.io/gh/AdityaSidharta/logsensei/branch/master/graph/badge.svg)](https://codecov.io/gh/AdityaSidharta/logsensei) [![Documentation](https://img.shields.io/badge/docs-passing-Green)](https://adityasidharta.com/logsensei/)
+[![codecov](https://codecov.io/gh/AdityaSidharta/logsensei/branch/master/graph/badge.svg)](https://codecov.io/gh/AdityaSidharta/logsensei) [![Documentation](https://img.shields.io/badge/docs-passing-Green)](https://adityasidharta.com/logsensei/) ![PyPI](https://img.shields.io/pypi/v/logsensei)
 
 ## Introduction
 This Python Package is build to solve one of the pain points in building Data Science projects: Having an effective logging system. As Data Science Projects often involve data ingestion, data transformation (Be it due to Data Cleaning Process, Feature Engineering, Feature Encoding, etc) and model building, we want to make sure that each steps of the process works as intended. Furthermore, in deploying our data science system, we often automate this data ingestion and data transformation processes. Effective logging will help us monitor our pipeline so that the model that we are about to train will yield consistent, accurate results.
