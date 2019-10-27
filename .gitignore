@@ -132,3 +132,4 @@ env
 tmp
 test/log
 env/
+examples/log
