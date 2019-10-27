@@ -1,6 +1,6 @@
 """Personal Formatting on Loguru"""
 
-__version__ = "0.3.2"
+__version__ = "1.0.0"
 __author__ = "Aditya Kelvianto Sidharta"
 
 import io
