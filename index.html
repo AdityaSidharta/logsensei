@@ -230,9 +230,66 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Home
+      </label>
+    
     <a href="." title="Home" class="md-nav__link md-nav__link--active">
       Home
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    Usage examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    Author
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -350,6 +407,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    Usage examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#author" class="md-nav__link">
+    Author
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    License
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -364,9 +465,68 @@
                 
                 
                 <h1 id="logsensei">logsensei</h1>
-<p>Personal Wrapper on Loguru</p>
+<p><img alt="Logo" src="static/images/logo.png" /></p>
+<p>Logger for Data Scientist -  <a href="https://adityasidharta.com/logsensei/reference/logsensei/">Documentation</a></p>
 <p><a href="https://travis-ci.org/AdityaSidharta/logsensei"><img alt="Build Status" src="https://travis-ci.org/AdityaSidharta/logsensei.svg?branch=master" /></a> <a href="https://www.codacy.com/manual/AdityaSidharta/logsensei?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AdityaSidharta/logsensei&amp;utm_campaign=Badge_Grade"><img alt="Codacy Badge" src="https://api.codacy.com/project/badge/Grade/315315d588c745929c5a3093d2b92850" /></a> 
-<a href="https://codecov.io/gh/AdityaSidharta/logsensei"><img alt="codecov" src="https://codecov.io/gh/AdityaSidharta/logsensei/branch/master/graph/badge.svg" /></a><a href="https://adityasidharta.com/logsensei/"><img alt="Documentation" src="https://img.shields.io/badge/docs-passing-Green" /></a></p>
+<a href="https://codecov.io/gh/AdityaSidharta/logsensei"><img alt="codecov" src="https://codecov.io/gh/AdityaSidharta/logsensei/branch/master/graph/badge.svg" /></a> <a href="https://adityasidharta.com/logsensei/"><img alt="Documentation" src="https://img.shields.io/badge/docs-passing-Green" /></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>This Python Package is build to solve one of the pain points in building Data Science projects: Having an effective logging system. As Data Science Projects often involve data ingestion, data transformation (Be it due to Data Cleaning Process, Feature Engineering, Feature Encoding, etc) and model building, we want to make sure that each steps of the process works as intended. Furthermore, in deploying our data science system, we often automate this data ingestion and data transformation processes. Effective logging will help us monitor our pipeline so that the model that we are about to train will yield consistent, accurate results.</p>
+<h2 id="installation">Installation</h2>
+<div class="codehilite"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">logsensei</span>
+</pre></div>
+
+
+<h2 id="usage-examples">Usage examples</h2>
+<p>logsensei is very easy and intuitive to use. You can load logsensei by:</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">logsensei</span>
+<span class="kn">from</span> <span class="nn">logsensei</span> <span class="kn">import</span> <span class="n">logger</span>
+</pre></div>
+
+
+<p>Save the logs into a file by:</p>
+<div class="codehilite"><pre><span></span><span class="n">logger</span><span class="p">.</span><span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="ss">&quot;personal_projects&quot;</span><span class="p">,</span> <span class="n">logger_file</span><span class="o">=</span><span class="ss">&quot;./logs&quot;</span><span class="p">,</span> <span class="k">level</span><span class="o">=</span><span class="n">logsensei</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The setup is done! You can use various logging functions that is provided by the logger. Some of the examples are as follows:</p>
+<div class="codehilite"><pre><span></span><span class="nb">array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">logger</span><span class="p">.</span><span class="nb">array</span><span class="p">(</span><span class="nb">array</span><span class="p">,</span> <span class="s1">&#39;d_array&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">26</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2</span> <span class="o">|</span> <span class="nb">Array</span> <span class="n">d_array</span> <span class="n">shape</span> <span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">26</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2</span> <span class="o">|</span> <span class="nb">Array</span> <span class="n">d_array</span> <span class="k">unique</span> <span class="k">values</span> <span class="p">:</span> <span class="err">{</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="err">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">26</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2</span> <span class="o">|</span> <span class="nb">Array</span> <span class="n">d_array</span> <span class="k">cardinality</span> <span class="p">:</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">26</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2</span> <span class="o">|</span> <span class="nb">Array</span> <span class="n">d_array</span> <span class="n">missing</span> <span class="k">values</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="mi">67</span><span class="o">%</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">26</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">2</span> <span class="o">|</span> <span class="nb">Array</span> <span class="n">d_array</span> <span class="n">info</span> <span class="p">:</span> <span class="n">MEAN</span><span class="o">=</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span> <span class="o">|</span> <span class="n">STD</span><span class="o">=</span><span class="mi">0</span><span class="p">.</span><span class="mi">7483314773547882</span> <span class="o">|</span> <span class="k">MIN</span><span class="o">=</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mi">25</span><span class="n">TH</span><span class="o">=</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">|</span> <span class="n">MEDIAN</span><span class="o">=</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">|</span> <span class="mi">75</span><span class="n">TH</span><span class="o">=</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span> <span class="o">|</span> <span class="k">MAX</span><span class="o">=</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">logger</span><span class="p">.</span><span class="n">classification</span><span class="p">(</span><span class="n">target_binary</span><span class="p">,</span> <span class="n">pred_binary</span><span class="p">,</span> <span class="ss">&quot;Cancer Detection&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="n">Cancer</span> <span class="n">Detection</span> <span class="n">Classification</span> <span class="n">Score</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="o">====================</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="n">Accuracy</span> <span class="n">Score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">46</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="k">Precision</span> <span class="n">Score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5111111111111111</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="n">Recall</span> <span class="n">Score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">41818181818181815</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="n">F1</span> <span class="n">Score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4599999999999999</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2019</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">27</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">36</span> <span class="o">|</span> <span class="n">INFO</span> <span class="o">|</span> <span class="n">__main__</span><span class="p">:</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span> <span class="o">|</span> <span class="n">ROC</span> <span class="n">AUC</span> <span class="n">Score</span> <span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">46464646464646464</span>
+</pre></div>
+
+
+<p>For Full Documentation on the API, please visit <a href="https://adityasidharta.com/logsensei/reference/logsensei/">API Documentation</a></p>
+<h2 id="author">Author</h2>
+<ul>
+<li><strong>Aditya Kelvianto Sidharta</strong><ul>
+<li>Github: <a href="https://github.com/AdityaSidharta">https://github.com/AdityaSidharta</a></li>
+<li>Personal Website: <a href="https://adityasidharta.com/">https://adityasidharta.com/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details</p>
                 
                   
                 

@@ -24,6 +24,7 @@ portray = "*"
 loguru = "*"
 scikit-learn = "*"
 numpy = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7.2"
